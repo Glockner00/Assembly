@@ -11,6 +11,7 @@ MAIN:
 	; DDRB Data Direction Register B, controlls the data direction (input/output)
 	; for the pins in port B. If DDRB is set to 1/0 -> corresponding pin is output/input.
 	STARTBIT:       ; For PB.
+		ldi r25, 8
 		sbi DDRB, 0 ; PB0 as output
 		sbi DDRB, 1 ; PB1 as output
 		sbi DDRB, 2 ; PB2 as output
@@ -37,6 +38,8 @@ MAIN:
 		ldi r21, 4
 
 	DATALOOP:
+		dec r25
+		breq DONE		;Move to DONE if Z==o
 		call DELAY     ; Delay 8 ms
 		call DELAY     ; Delay 8 ms
 		in r22, PORTA   ; Read from PORTA
@@ -68,3 +71,4 @@ MAIN:
 			brne delayOuterLoop	; check Z flag, if dec r17 gives 0 -> jump delayInnerLoop.
 			cbi PORTB, 7		; clears bit in I/O registry
 				ret			        ; return   har inget att peka på.
+	DONE:

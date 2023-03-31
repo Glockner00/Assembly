@@ -1,10 +1,9 @@
 
-AVRASM ver. 2.2.8  C:\Users\axelg\OneDrive\Dokument\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Tue Mar 28 16:04:12 2023
+AVRASM ver. 2.2.8  C:\Users\axelg\Assembly\Lektionsuppgifter\AssemblerApplication1\AssemblerApplication1\main.asm Wed Mar 29 12:55:04 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc'
-[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc'
                                  
-                                 	;
+                                 ; AssemblerApplication1.asm
                                  
                                  ;***** Created: 2011-02-09 12:03 ******* Source: ATmega16A.xml ***********
                                  ;*************************************************************************
@@ -870,111 +869,21 @@ AVRASM ver. 2.2.8  C:\Users\axelg\OneDrive\Dokument\Atmel Studio\7.0\AssemblerAp
                                  #endif  /* _M16ADEF_INC_ */
                                  
                                  
-                                 	; --- Testprogram med lite kommentarer.
-                                 	; --- Kompilera med F7, börja enkelstegning med F11 
-                                 	; --- under Build- respektive Debug-menyerna ovan
-                                 	;
                                  
-                                 	/* Detta är också en kommentar */
-                                 	// Liksom detta (till slutet av raden)
-                                 	// (Mer finns att läsa på www.avr-asm-tutorial.net/avr_en/beginner )
+                                 ; Created: 3/29/2023 11:59:52 AM
+                                 ; Author : axelg
                                  
-                                 	; ---	Man kan döpa om register med .def (define)
+                                 ; Replace with your application code
                                  
-                                 	.def	index	 = r16
-                                 	.def	offset   = r17
-                                 
-                                 	; ---	Man kan och sätta konstanter med .equ (equate)
-                                 
-                                 	.equ	minVariabel = $60 ; Början på SRAM
-                                 
-                                 	; ---	Man kan säga var i programminnet koden 
-                                 	; ---	ska läggas med .org (origin)
+                                 start:
+000000 ec06                          ldi r16, 198
+000001 e923                      	ldi r18, $93
                                  	
-                                 	; --- Programmet körs alltid från rad 0
+000002 2f20                      	mov r18, r16
                                  
-                                 	.org	0		; Programstart här!
-000000 940c 0005                 	jmp	START		; Första programraden
-                                 				; (man BEHÖVER inte göra hoppet)
-                                 				; (det är bara exempel på .org)
-                                 
-000002 0000                      	nop
-000003 0000                      	nop			; Kod här hoppas över alltså
-000004 0000                      	nop
-                                 
-                                 	; --- Programmet nedan gör bara nonsens för att visa lite instruktioner
-                                 	; --- Vid simulering: Titta i processorfönstret (Debug/Windows/Processor)
-                                 	; --- Se också SRAM i (Debug/Windows/Memory/Memory 1), rad 0x0060 påverkas
-                                 	
-                                 START:				
-000005 e603                      	ldi	r16,99		; r16 = decimal konstant 
-000006 e114                      	ldi	r17,$14		; r17 = hexadecimal konstant
-000007 0f01                      	add	r16,r17		; r17 = r17+r16
-000008 9300 0060                 	sts	$60,r16		; Lägg resultatet i minnet SRAM
-                                 
-                                 	; --- Nu kommer samma som ovan men med fördefinierade namn enligt förut
-                                 
-00000a e603                      	ldi	index,99	 
-00000b e114                      	ldi	offset,$14	
-00000c 0f01                      	add	index,offset	
-00000d 9300 0060                 	sts	minVariabel,index
-                                 
-                                 	; --- Visst blev det något mer läsbart? Till och med utan kommentarer.
-                                 
-                                 	; --- Nytt exempel. Lagra minsta av r20 och r21 i r20
-                                 
-                                 comp:
-00000f e24e                      	ldi	r20,46		; ena talet	
-000010 e157                      	ldi	r21,23		; andra talet
-000011 1745                      	cp	r20,r21		; r20 - r21, uppdatera flaggor (ZNVCH)
-000012 f412                      	brpl	R21MINST	; hoppa om (r20-r21) > 0, dvs enbart N-flaggan
-000013 940c 0016                 	jmp	KLAR		; kommer vi hit tydligen var r20 minst...
-                                 R21MINST:
-000015 2f45                      	mov	r20,r21		; ...annars var r21 minst
-                                 KLAR:	
-000016 0000                      	nop			; här är r20=min(r20,r21)
-000017 0000                      	nop
-                                 
-                                 	; --- Fortsätter med lite minnespetande
-                                 
-                                 	; --- Sätt Z-pekaren till att peka på minVariabel i SRAM
-                                 
-000018 e0f0                      	ldi	ZH,HIGH(minVariabel)	; HIGH($0060)=00
-000019 e6e0                      	ldi	ZL,LOW(minVariabel)	; LOW($0060)=60
-                                 
-00001a 8140                      	ld	r20,Z		; hämta det som Z=ZH:ZL pekar på
-                                 				; dvs det som sts ovan lade dit
-00001b 9543                      	inc	r20		; r20++
-00001c 8340                      	st	Z,r20		; lägg tillbaks det i SRAM
-00001d 9670                      	adiw	Z,$10		; Peka $10 bytes längre fram i minnet
-00001e 8340                      	st	Z,r20		; Lägg r20 där också
-                                 
-                                 	; --- Avslutar med (nästan) DELAY från lab1
-                                 
-                                 	; --- För att "sbi PORTB,7" ska funka måste port B
-                                 	; --- konfigureras som utgång först.
-                                 CONFIG:
-00001f e800                      	ldi	r16,$80		; DataDirectionRegisterB = $80 = "1000 0000" 
-000020 bb07                      	out	DDRB,r16	; bit 7 utgång, alla andra ingång
-                                 	
-                                 	; --- Öppna fönstret I/O View och klicka på PORTB för att se
-                                 	; --- hur bit 7 blir 1 vid sbi (set bit) och 0 vid cbi (clear bit)
-                                 	; --- I labben är sbi/cbi på andra ställen men principen är densamma
-                                 	; --- Här är läge att sätta brytpunkter (F9) 
-                                 	; --- och sedan köra fullfart (F5) till nästa brytpunkt (spar tid!)
-                                 
-                                 DELAY:
-000021 e105                      	ldi	r16,21
-                                 delayYttreLoop:
-000022 9ac7                      	sbi	PORTB,7
-000023 ef1f                      	ldi	r17,$ff
-                                 delayInreLoop:
-000024 951a                      	dec	r17
-000025 f7f1                      	brne	delayInreLoop
-000026 98c7                      	cbi	PORTB,7
-000027 950a                      	dec	r16
-000028 f7c9                      	brne	delayYttreLoop
-                                 FOREVER:
+000003 9140 0110                 	lds r20, $110
+000005 9110 0112                 	lds r17, $112
+000007 2f41                      	mov r20, r17
 
 
 RESOURCE USE INFORMATION
@@ -992,39 +901,39 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega16A" register use summary:
-x  :   0 y  :   0 z  :   4 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  10 r17:   6 r18:   0 r19:   0 r20:   7 
-r21:   3 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
-r29:   0 r30:   1 r31:   1 
-Registers used: 7 out of 35 (20.0%)
+r13:   0 r14:   0 r15:   0 r16:   2 r17:   2 r18:   2 r19:   0 r20:   2 
+r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
+r29:   0 r30:   0 r31:   0 
+Registers used: 4 out of 35 (11.4%)
 
 "ATmega16A" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   2 adiw  :   1 and   :   0 
+.lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   2 brpl  :   1 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   1 cbr   :   0 
+brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
-clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   1 cpc   :   0 
-cpi   :   0 cpse  :   0 dec   :   2 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   1 jmp   :   3 
-ld    :   1 ldd   :   0 ldi   :  11 lds   :   0 lpm   :   0 lsl   :   0 
-lsr   :   0 mov   :   1 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   5 or    :   0 ori   :   0 out   :   1 pop   :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
+cpi   :   0 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   0 
+ld    :   0 ldd   :   0 ldi   :   2 lds   :   2 lpm   :   0 lsl   :   0 
+lsr   :   0 mov   :   2 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   0 pop   :   0 
 push  :   0 rcall :   0 ret   :   0 reti  :   0 rjmp  :   0 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   1 sbic  :   0 sbis  :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
-sez   :   0 sleep :   0 spm   :   0 st    :   2 std   :   0 sts   :   2 
+sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 17 out of 113 (15.0%)
+Instructions used: 3 out of 113 (2.7%)
 
 "ATmega16A" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000056     86      0     86   16384   0.5%
+[.cseg] 0x000000 0x000010     16      0     16   16384   0.1%
 [.dseg] 0x000060 0x000060      0      0      0    1024   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 

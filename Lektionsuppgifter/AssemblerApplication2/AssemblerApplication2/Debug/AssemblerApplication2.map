@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\axelg\OneDrive\Dokument\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Tue Mar 28 16:04:12 2023
+AVRASM ver. 2.2.8  C:\Users\axelg\Assembly\Lektionsuppgifter\AssemblerApplication2\AssemblerApplication2\main.asm Thu Mar 30 11:43:59 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -604,15 +604,4 @@ EQU  INT2addr     00000024
 EQU  OC0addr      00000026
 EQU  SPMRaddr     00000028
 EQU  INT_VECTORS_SIZE 0000002a
-DEF  index        r16
-DEF  offset       r17
-EQU  minVariabel  00000060
-CSEG START        00000005
-CSEG comp         0000000f
-CSEG R21MINST     00000015
-CSEG KLAR         00000016
-CSEG CONFIG       0000001f
-CSEG DELAY        00000021
-CSEG delayYttreLoop 00000022
-CSEG delayInreLoop 00000024
-CSEG FOREVER      00000029
+CSEG start        00000000

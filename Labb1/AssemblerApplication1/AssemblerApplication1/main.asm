@@ -20,8 +20,7 @@ MAIN:
 		ANDI r20, 0x01  ; Maskar msb
 		brne CHECKBIT   ; if Z==0, if there has been a one.
 		
-	; T/2 = 8ms
-	CHECKBIT:
+	CHECKBIT:           ; T/2 = 8ms
 		jmp DELAY 
 
 	VALID:
@@ -34,8 +33,8 @@ MAIN:
 		ldi r21, 4
 
 	DATALOOP:
-		jmp DELAY       ; Delay 8 ms
-		jmp DELAY       ; Delay 8 ms
+		rcall DELAY     ; Delay 8 ms
+		rcall DELAY     ; Delay 8 ms
 		in r22, PORTA   ; Read from PORTA
 		ANDI R22, 0x01  ; maskar msb
 		ADD r23, r22    ; Add r22 to r23

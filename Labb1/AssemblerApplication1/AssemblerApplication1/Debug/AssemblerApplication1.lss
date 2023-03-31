@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm Fri Mar 31 11:33:26 2023
+AVRASM ver. 2.2.8  C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm Fri Mar 31 03:35:41 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc'
@@ -872,7 +872,7 @@ AVRASM ver. 2.2.8  C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\Assembler
                                  
                                  ; Created: 3/31/2023 10:00:56 AM
                                  ; Author : Axel Glöckner, Olle Håkansson
-                                 
+                                 ; pekare för rcall ! :! : !: !: !:
                                  MAIN:
                                  	; sbi - set bit in I/O register
                                  	; DDRB Data Direction Register B, controlls the data direction (input/output)
@@ -887,16 +887,15 @@ AVRASM ver. 2.2.8  C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\Assembler
                                  	SEARCH:
                                  
                                  	FIND1:
-000005 b34b                      		in r20, PORTA	; Read from PORTA
+000005 b349                      		in r20, PINA	; Read from PINA
 000006 7041                      		ANDI r20, 0x01  ; Maskar msb
 000007 f401                      		brne CHECKBIT   ; if Z==0, if there has been a one.
                                  		
-                                 	; T/2 = 8ms
-                                 	CHECKBIT:
-000008 940c 0021                 		jmp DELAY 
+                                 	CHECKBIT:           ; T/2 = 8ms
+000008 940c 001f                 		jmp DELAY 
                                  
                                  	VALID:
-00000a b34b                      		in r20, PORTA  ; Read from PORTA
+00000a b349                      		in r20, PINA   ; Read from PINA
 00000b 7041                      		ANDI r20, 0x01 ; maskar msb
 00000c f411                      		brne DATA      ; Move to DATA if Z==0, if there has been a one
 00000d 940c 0005                 		jmp FIND1      ; Otherwise jump to FIND1
@@ -905,36 +904,36 @@ AVRASM ver. 2.2.8  C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\Assembler
 00000f e054                      		ldi r21, 4
                                  
                                  	DATALOOP:
-000010 940c 0021                 		jmp DELAY       ; Delay 8 ms
-000012 940c 0021                 		jmp DELAY       ; Delay 8 ms
-000014 b36b                      		in r22, PORTA   ; Read from PORTA
-000015 7061                      		ANDI R22, 0x01  ; maskar msb
-000016 0f76                      		ADD r23, r22    ; Add r22 to r23
-000017 9577                      		ror r23         ; Rotate so i doesnt wirte over lmao
-000018 9577                      		ror r23		    ; Rotate to avoid putting it in carry
-000019 955a                      		dec r21         ; Count down
-00001a f7a9                      		brne DATALOOP
+000010 d00e                      		rcall DELAY     ; Delay 8 ms
+000011 d00d                      		rcall DELAY     ; Delay 8 ms
+000012 b36b                      		in r22, PORTA   ; Read from PORTA
+000013 7061                      		ANDI R22, 0x01  ; maskar msb
+000014 0f76                      		ADD r23, r22    ; Add r22 to r23
+000015 9577                      		ror r23         ; Rotate so i doesnt wirte over lmao
+000016 9577                      		ror r23		    ; Rotate to avoid putting it in carry
+000017 955a                      		dec r21         ; Count down
+000018 f7b9                      		brne DATALOOP
                                  		
+000019 1f77                      		rol r23
+00001a 1f77                      		rol r23
 00001b 1f77                      		rol r23
 00001c 1f77                      		rol r23
-00001d 1f77                      		rol r23
-00001e 1f77                      		rol r23
-00001f 1f77                      		rol r23		   ; Rotate msb to index 0
-000020 bb78                      		out PORTB, r23 ; send r23 out of PORTB
+00001d 1f77                      		rol r23		   ; Rotate msb to index 0
+00001e bb78                      		out PORTB, r23 ; send r23 out of PORTB
                                  
                                  	DELAY:
-000021 9ac7                      		sbi PORTB, 7   ; Set bit number seven in the I/O register to one.
-000022 e604                      		ldi r16, 100   ; Decimal base
+00001f 9ac7                      		sbi PORTB, 7   ; Set bit number seven in the I/O register to one.
+000020 e604                      		ldi r16, 100   ; Decimal base
                                  
                                  		delayOuterLoop:
-000023 e510                      			ldi r17, 80
+000021 e510                      			ldi r17, 80
                                  		
                                  		delayInnerLoop:
-000024 951a                      			dec r17		        ; decrease r17 with one.
-000025 f7f1                      			brne delayInnerLoop	; if dec r17 gives 0 -> jump delayInnerLoop 
-000026 950a                      			dec r16				; decrease r16 with one
-000027 f7d9                      			brne delayOuterLoop	; check Z flag, if dec r17 gives 0 -> jump delayInnerLoop.
-000028 98c7                      			cbi PORTB, 7		; clears bit in I/O registry
+000022 951a                      			dec r17		        ; decrease r17 with one.
+000023 f7f1                      			brne delayInnerLoop	; if dec r17 gives 0 -> jump delayInnerLoop 
+000024 950a                      			dec r16				; decrease r16 with one
+000025 f7d9                      			brne delayOuterLoop	; check Z flag, if dec r17 gives 0 -> jump delayInnerLoop.
+000026 98c7                      			cbi PORTB, 7		; clears bit in I/O registry
 
 
 RESOURCE USE INFORMATION
@@ -969,22 +968,22 @@ brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   1 cbr   :   0
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   0 cpse  :   0 dec   :   3 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   3 inc   :   0 jmp   :   4 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   3 inc   :   0 jmp   :   2 
 ld    :   0 ldd   :   0 ldi   :   3 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   1 pop   :   0 
-push  :   0 rcall :   0 ret   :   1 reti  :   0 rjmp  :   0 rol   :   5 
+push  :   0 rcall :   2 ret   :   1 reti  :   0 rjmp  :   0 rol   :   5 
 ror   :   2 sbc   :   0 sbci  :   0 sbi   :   6 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 13 out of 113 (11.5%)
+Instructions used: 14 out of 113 (12.4%)
 
 "ATmega16A" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000054     84      0     84   16384   0.5%
+[.cseg] 0x000000 0x000050     80      0     80   16384   0.5%
 [.dseg] 0x000060 0x000060      0      0      0    1024   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 

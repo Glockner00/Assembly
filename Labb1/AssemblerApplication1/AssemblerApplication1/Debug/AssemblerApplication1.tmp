@@ -26,12 +26,12 @@
   <STARTBIT><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>9</LINE></STARTBIT>
   <SEARCH><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>16</LINE></SEARCH>
   <FIND1><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>18</LINE></FIND1>
-  <CHECKBIT><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>24</LINE></CHECKBIT>
-  <DELAY><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>54</LINE></DELAY>
-  <VALID><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>27</LINE></VALID>
-  <DATA><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>33</LINE></DATA>
-  <DATALOOP><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>36</LINE></DATALOOP>
-  <delayOuterLoop><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>58</LINE></delayOuterLoop>
-  <delayInnerLoop><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>61</LINE></delayInnerLoop>
+  <CHECKBIT><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>23</LINE></CHECKBIT>
+  <DELAY><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>53</LINE></DELAY>
+  <VALID><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>26</LINE></VALID>
+  <DATA><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>32</LINE></DATA>
+  <DATALOOP><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>35</LINE></DATALOOP>
+  <delayOuterLoop><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>57</LINE></delayOuterLoop>
+  <delayInnerLoop><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>60</LINE></delayInnerLoop>
  </LABELS>
 </ASSEMBLER_INFO>

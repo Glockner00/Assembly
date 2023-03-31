@@ -1,7 +1,7 @@
 ; IR - labb1
 ; Created: 3/31/2023 10:00:56 AM
 ; Author : Axel Glöckner, Olle Håkansson
-
+; pekare för rcall ! :! : !: !: !:
 MAIN:
 	; sbi - set bit in I/O register
 	; DDRB Data Direction Register B, controlls the data direction (input/output)
@@ -16,7 +16,7 @@ MAIN:
 	SEARCH:
 
 	FIND1:
-		in r20, PORTA	; Read from PORTA
+		in r20, PINA	; Read from PINA
 		ANDI r20, 0x01  ; Maskar msb
 		brne CHECKBIT   ; if Z==0, if there has been a one.
 		
@@ -24,7 +24,7 @@ MAIN:
 		jmp DELAY 
 
 	VALID:
-		in r20, PORTA  ; Read from PORTA
+		in r20, PINA   ; Read from PINA
 		ANDI r20, 0x01 ; maskar msb
 		brne DATA      ; Move to DATA if Z==0, if there has been a one
 		jmp FIND1      ; Otherwise jump to FIND1
@@ -63,4 +63,4 @@ MAIN:
 			dec r16				; decrease r16 with one
 			brne delayOuterLoop	; check Z flag, if dec r17 gives 0 -> jump delayInnerLoop.
 			cbi PORTB, 7		; clears bit in I/O registry
-			ret  				; return
+			ret  				; return   har inget att peka på.

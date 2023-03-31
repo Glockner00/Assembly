@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm Fri Mar 31 11:33:26 2023
+AVRASM ver. 2.2.8  C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm Fri Mar 31 03:35:41 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -609,9 +609,9 @@ CSEG STARTBIT     00000000
 CSEG SEARCH       00000005
 CSEG FIND1        00000005
 CSEG CHECKBIT     00000008
-CSEG DELAY        00000021
+CSEG DELAY        0000001f
 CSEG VALID        0000000a
 CSEG DATA         0000000f
 CSEG DATALOOP     00000010
-CSEG delayOuterLoop 00000023
-CSEG delayInnerLoop 00000024
+CSEG delayOuterLoop 00000021
+CSEG delayInnerLoop 00000022

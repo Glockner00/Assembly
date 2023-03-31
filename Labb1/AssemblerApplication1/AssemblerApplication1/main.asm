@@ -2,6 +2,10 @@
 ; Created: 3/31/2023 10:00:56 AM
 ; Author : Axel Glöckner, Olle Håkansson
 ; pekare för rcall ! :! : !: !: !:
+ldi r16, HIGH(RAMEND)		; Load the high byte of RAMEND into r16
+	out SPH, r16			; Set the high byte of the stack pointer
+    ldi r16, LOW(RAMEND)	; Load the low byte of RAMEND into r16
+    out SPL, r16			; Set the low byte of the stack pointer
 MAIN:
 	; sbi - set bit in I/O register
 	; DDRB Data Direction Register B, controlls the data direction (input/output)
@@ -21,20 +25,20 @@ MAIN:
 		brne CHECKBIT   ; if Z==0, if there has been a one.
 		
 	CHECKBIT:           ; T/2 = 8ms
-		jmp DELAY 
+		call DELAY 
 
 	VALID:
 		in r20, PINA   ; Read from PINA
 		ANDI r20, 0x01 ; maskar msb
 		brne DATA      ; Move to DATA if Z==0, if there has been a one
-		jmp FIND1      ; Otherwise jump to FIND1
+		call FIND1      ; Otherwise jump to FIND1
 
 	DATA: 
 		ldi r21, 4
 
 	DATALOOP:
-		rcall DELAY     ; Delay 8 ms
-		rcall DELAY     ; Delay 8 ms
+		call DELAY     ; Delay 8 ms
+		call DELAY     ; Delay 8 ms
 		in r22, PORTA   ; Read from PORTA
 		ANDI R22, 0x01  ; maskar msb
 		ADD r23, r22    ; Add r22 to r23
@@ -63,4 +67,4 @@ MAIN:
 			dec r16				; decrease r16 with one
 			brne delayOuterLoop	; check Z flag, if dec r17 gives 0 -> jump delayInnerLoop.
 			cbi PORTB, 7		; clears bit in I/O registry
-			ret  				; return   har inget att peka på.
+				ret			        ; return   har inget att peka på.

@@ -22,16 +22,16 @@
   <FILE>AssemblerApplication1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <MAIN><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>5</LINE></MAIN>
-  <STARTBIT><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>9</LINE></STARTBIT>
-  <SEARCH><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>16</LINE></SEARCH>
-  <FIND1><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>18</LINE></FIND1>
-  <CHECKBIT><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>23</LINE></CHECKBIT>
-  <DELAY><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>53</LINE></DELAY>
-  <VALID><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>26</LINE></VALID>
-  <DATA><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>32</LINE></DATA>
-  <DATALOOP><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>35</LINE></DATALOOP>
-  <delayOuterLoop><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>57</LINE></delayOuterLoop>
-  <delayInnerLoop><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>60</LINE></delayInnerLoop>
+  <MAIN><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>9</LINE></MAIN>
+  <STARTBIT><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>13</LINE></STARTBIT>
+  <SEARCH><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>20</LINE></SEARCH>
+  <FIND1><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>22</LINE></FIND1>
+  <CHECKBIT><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>27</LINE></CHECKBIT>
+  <DELAY><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>57</LINE></DELAY>
+  <VALID><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>30</LINE></VALID>
+  <DATA><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>36</LINE></DATA>
+  <DATALOOP><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>39</LINE></DATALOOP>
+  <delayOuterLoop><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>61</LINE></delayOuterLoop>
+  <delayInnerLoop><FILE>C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>64</LINE></delayInnerLoop>
  </LABELS>
 </ASSEMBLER_INFO>

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm Fri Mar 31 03:35:41 2023
+AVRASM ver. 2.2.8  C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\AssemblerApplication1\main.asm Fri Mar 31 04:20:02 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc'
@@ -873,67 +873,71 @@ AVRASM ver. 2.2.8  C:\Users\axelg\Assembly\Labb1\AssemblerApplication1\Assembler
                                  ; Created: 3/31/2023 10:00:56 AM
                                  ; Author : Axel Glöckner, Olle Håkansson
                                  ; pekare för rcall ! :! : !: !: !:
+000000 e004                      ldi r16, HIGH(RAMEND) ; Load the high byte of RAMEND into r16
+000001 bf0e                      	out SPH, r16           ; Set the high byte of the stack pointer
+000002 e50f                          ldi r16, LOW(RAMEND)  ; Load the low byte of RAMEND into r16
+000003 bf0d                          out SPL, r16           ; Set the low byte of the stack pointer
                                  MAIN:
                                  	; sbi - set bit in I/O register
                                  	; DDRB Data Direction Register B, controlls the data direction (input/output)
                                  	; for the pins in port B. If DDRB is set to 1/0 -> corresponding pin is output/input.
                                  	STARTBIT:       ; For PB.
-000000 9ab8                      		sbi DDRB, 0 ; PB0 as output
-000001 9ab9                      		sbi DDRB, 1 ; PB1 as output
-000002 9aba                      		sbi DDRB, 2 ; PB2 as output
-000003 9abb                       		sbi DDRB, 3 ; PB3 as output
-000004 9abf                      		sbi DDRB, 7 ; PB7 as output.
+000004 9ab8                      		sbi DDRB, 0 ; PB0 as output
+000005 9ab9                      		sbi DDRB, 1 ; PB1 as output
+000006 9aba                      		sbi DDRB, 2 ; PB2 as output
+000007 9abb                       		sbi DDRB, 3 ; PB3 as output
+000008 9abf                      		sbi DDRB, 7 ; PB7 as output.
                                  
                                  	SEARCH:
                                  
                                  	FIND1:
-000005 b349                      		in r20, PINA	; Read from PINA
-000006 7041                      		ANDI r20, 0x01  ; Maskar msb
-000007 f401                      		brne CHECKBIT   ; if Z==0, if there has been a one.
+000009 b349                      		in r20, PINA	; Read from PINA
+00000a 7041                      		ANDI r20, 0x01  ; Maskar msb
+00000b f401                      		brne CHECKBIT   ; if Z==0, if there has been a one.
                                  		
                                  	CHECKBIT:           ; T/2 = 8ms
-000008 940c 001f                 		jmp DELAY 
+00000c 940e 0025                 		call DELAY 
                                  
                                  	VALID:
-00000a b349                      		in r20, PINA   ; Read from PINA
-00000b 7041                      		ANDI r20, 0x01 ; maskar msb
-00000c f411                      		brne DATA      ; Move to DATA if Z==0, if there has been a one
-00000d 940c 0005                 		jmp FIND1      ; Otherwise jump to FIND1
+00000e b349                      		in r20, PINA   ; Read from PINA
+00000f 7041                      		ANDI r20, 0x01 ; maskar msb
+000010 f411                      		brne DATA      ; Move to DATA if Z==0, if there has been a one
+000011 940e 0009                 		call FIND1      ; Otherwise jump to FIND1
                                  
                                  	DATA: 
-00000f e054                      		ldi r21, 4
+000013 e054                      		ldi r21, 4
                                  
                                  	DATALOOP:
-000010 d00e                      		rcall DELAY     ; Delay 8 ms
-000011 d00d                      		rcall DELAY     ; Delay 8 ms
-000012 b36b                      		in r22, PORTA   ; Read from PORTA
-000013 7061                      		ANDI R22, 0x01  ; maskar msb
-000014 0f76                      		ADD r23, r22    ; Add r22 to r23
-000015 9577                      		ror r23         ; Rotate so i doesnt wirte over lmao
-000016 9577                      		ror r23		    ; Rotate to avoid putting it in carry
-000017 955a                      		dec r21         ; Count down
-000018 f7b9                      		brne DATALOOP
+000014 940e 0025                 		call DELAY     ; Delay 8 ms
+000016 940e 0025                 		call DELAY     ; Delay 8 ms
+000018 b36b                      		in r22, PORTA   ; Read from PORTA
+000019 7061                      		ANDI R22, 0x01  ; maskar msb
+00001a 0f76                      		ADD r23, r22    ; Add r22 to r23
+00001b 9577                      		ror r23         ; Rotate so i doesnt wirte over lmao
+00001c 9577                      		ror r23		    ; Rotate to avoid putting it in carry
+00001d 955a                      		dec r21         ; Count down
+00001e f7a9                      		brne DATALOOP
                                  		
-000019 1f77                      		rol r23
-00001a 1f77                      		rol r23
-00001b 1f77                      		rol r23
-00001c 1f77                      		rol r23
-00001d 1f77                      		rol r23		   ; Rotate msb to index 0
-00001e bb78                      		out PORTB, r23 ; send r23 out of PORTB
+00001f 1f77                      		rol r23
+000020 1f77                      		rol r23
+000021 1f77                      		rol r23
+000022 1f77                      		rol r23
+000023 1f77                      		rol r23		   ; Rotate msb to index 0
+000024 bb78                      		out PORTB, r23 ; send r23 out of PORTB
                                  
                                  	DELAY:
-00001f 9ac7                      		sbi PORTB, 7   ; Set bit number seven in the I/O register to one.
-000020 e604                      		ldi r16, 100   ; Decimal base
+000025 9ac7                      		sbi PORTB, 7   ; Set bit number seven in the I/O register to one.
+000026 e604                      		ldi r16, 100   ; Decimal base
                                  
                                  		delayOuterLoop:
-000021 e510                      			ldi r17, 80
+000027 e510                      			ldi r17, 80
                                  		
                                  		delayInnerLoop:
-000022 951a                      			dec r17		        ; decrease r17 with one.
-000023 f7f1                      			brne delayInnerLoop	; if dec r17 gives 0 -> jump delayInnerLoop 
-000024 950a                      			dec r16				; decrease r16 with one
-000025 f7d9                      			brne delayOuterLoop	; check Z flag, if dec r17 gives 0 -> jump delayInnerLoop.
-000026 98c7                      			cbi PORTB, 7		; clears bit in I/O registry
+000028 951a                      			dec r17		        ; decrease r17 with one.
+000029 f7f1                      			brne delayInnerLoop	; if dec r17 gives 0 -> jump delayInnerLoop 
+00002a 950a                      			dec r16				; decrease r16 with one
+00002b f7d9                      			brne delayOuterLoop	; check Z flag, if dec r17 gives 0 -> jump delayInnerLoop.
+00002c 98c7                      			cbi PORTB, 7		; clears bit in I/O registry
 
 
 RESOURCE USE INFORMATION
@@ -953,7 +957,7 @@ counted separately from r26..r31 here.
 "ATmega16A" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   2 r17:   2 r18:   0 r19:   0 r20:   4 
+r13:   0 r14:   0 r15:   0 r16:   6 r17:   2 r18:   0 r19:   0 r20:   4 
 r21:   2 r22:   3 r23:   9 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 6 out of 35 (17.1%)
@@ -964,26 +968,26 @@ andi  :   3 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   5 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   1 cbr   :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   4 cbi   :   1 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   0 cpse  :   0 dec   :   3 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   3 inc   :   0 jmp   :   2 
-ld    :   0 ldd   :   0 ldi   :   3 lds   :   0 lpm   :   0 lsl   :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   3 inc   :   0 jmp   :   0 
+ld    :   0 ldd   :   0 ldi   :   5 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   1 pop   :   0 
-push  :   0 rcall :   2 ret   :   1 reti  :   0 rjmp  :   0 rol   :   5 
+neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   3 pop   :   0 
+push  :   0 rcall :   0 ret   :   1 reti  :   0 rjmp  :   0 rol   :   5 
 ror   :   2 sbc   :   0 sbci  :   0 sbi   :   6 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 14 out of 113 (12.4%)
+Instructions used: 13 out of 113 (11.5%)
 
 "ATmega16A" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000050     80      0     80   16384   0.5%
+[.cseg] 0x000000 0x00005c     92      0     92   16384   0.6%
 [.dseg] 0x000060 0x000060      0      0      0    1024   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 

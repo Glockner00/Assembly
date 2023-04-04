@@ -1,10 +1,10 @@
 
-AVRASM ver. 2.2.8  C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm Tue Apr 04 18:42:09 2023
+AVRASM ver. 2.2.8  C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm Tue Apr 04 22:18:24 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16def.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16def.inc'
                                  
-                                 ; Created: 03/04/2023 15:28:22
+                                 ; Labb 1, IR-signal
                                  
                                  ;***** Created: 2011-02-09 12:03 ******* Source: ATmega16.xml ************
                                  ;*************************************************************************
@@ -870,8 +870,8 @@ AVRASM ver. 2.2.8  C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\m
                                  #endif  /* _M16DEF_INC_ */
                                  
                                  
-                                 ; Author : Olle Håkansson, Axel Glöckner.
-                                 ; Labb 1 - IR 
+                                 ; Authors : Olle Håkansson, Axel Glöckner.
+                                 
                                  INITSTACK:
 000000 e004                      	ldi r16, HIGH(RAMEND)	; Load the high byte of RAMEND into r16
 000001 bf0e                      	out SPH, r16			; Set the high byte of the stack pointer
@@ -879,53 +879,43 @@ AVRASM ver. 2.2.8  C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\m
 000003 bf0d                          out SPL, r16			; Set the low byte of the stack pointer
                                  
                                  STARTBIT:
-000004 e0d4                      	ldi r29, 4      ; For looping.
-000005 2700                      	clr r16
-000006 bb0a                      	out DDRA, r16
-000007 ef0f                      	ldi r16, 0xFF
-000008 bb07                      	out DDRB, r16
+000004 e0d4                      	ldi r29, 4      ; for constructing a loop
+000005 2700                      	clr r16			; clear out r16
+000006 bb0a                      	out DDRA, r16   ; set DDRA as input
+000007 ef0f                      	ldi r16, 0xFF   ; set r16 with all ones
+000008 bb07                      	out DDRB, r16   ; set DDRA as output
                                  
-                                 LETA:
+                                 FIND:
 000009 940e 0022                 	call DELAY 
 00000b b329                      	in r18, PINA    ; Read from PINA 
 00000c 7021                      	andi r18, 0x01  ; Mask lsb
 00000d f411                      	brne CHECKBIT   ; if Z=1
-00000e 940c 0009                 	jmp LETA        ; else jmp LETA
+00000e 940c 0009                 	jmp FIND        
                                  
                                  CHECKBIT:
 000010 b349                      	in r20, PINA    ; read PINA
 000011 7041                      	andi r20, 0x01  ; mask lsb
-000012 f3b1                      	breq LETA       ; If z=1 contiune
+000012 f3b1                      	breq FIND       ; If z=1 contiune
 000013 940e 0022                 	call DELAY      ; delay 8ms
                                  
-                                 	
-                                 
-                                 ;HITTA1:
-                                 ;	jmp DELAY      ; delay 8ms
-                                 ;	in r18, PINA   ; read from PINA
-                                 ;	andi r18, 0x01 ; mask lsb
-                                 ;	breq DATA      ; go to startbit if Z=1 .
-                                 ;	jmp LETA       ; go back if there is no number.
-                                 ;	ret
-                                 
                                  DATA:
-000015 940e 0022                 	call DELAY     ; delay 8ms  8ms (läs) -> 8ms + 8ms = 16 ms 
-000017 b339                      	in r19, PINA   ; read PINA
-000018 0f55                      	lsl r21        ; rotate r21 
-000019 0f53                      	add r21, r19   ; add r19 to r20 (r20 stores the output)
-00001a 940e 0022                 	call DELAY     ; delay 8ms
-00001c 95da                      	dec r29
-00001d f7b9                      	brne DATA      ; if r29 != 0
-00001e bb58                      	out PORTB, r21 ; output the data in PORTB
-00001f 2755                      	clr r21
-000020 940c 0004                 	jmp STARTBIT
+000015 940e 0022                 	call DELAY      ; delay 8ms
+000017 b339                      	in r19, PINA    ; read PINA
+000018 0f55                      	lsl r21         ; rotate r21 left for the next bit
+000019 0f53                      	add r21, r19    ; add r19 to the result in r20 (r20 stores the output)
+00001a 940e 0022                 	call DELAY      ; delay 8ms
+00001c 95da                      	dec r29		    ; decrease the itteration by one
+00001d f7b9                      	brne DATA       ; if r29 != 0
+00001e bb58                      	out PORTB, r21  ; output the data in PORTB
+00001f 2755                      	clr r21         ; clear out r21
+000020 940c 0004                 	jmp STARTBIT    ; get a new startbit
                                  
-                                 ;DELAY 8ms
+                                 ; Subrutine for a 8ms delay.
                                  DELAY:
-000022 9ac7                      	sbi PORTB, 7                ; Set bit number seven in the I/O register to one.
-000023 e604                      	ldi r16, 100                ; Decimal base
-                                 		delayOuterLoop:
-000024 e510                      			ldi r17, 80
+000022 9ac7                      	sbi PORTB, 7                ; set bit number seven in the I/O register to one.
+000023 e604                      	ldi r16, 100                ; 100 itterations.
+                                 	delayOuterLoop:
+000024 e510                      		ldi r17, 80				; 8O itterations. 
                                  		delayInnerLoop:
 000025 951a                      			dec r17		        ; decrease r17 with one.
 000026 f7f1                      			brne delayInnerLoop	; if dec r17 gives 0 -> jump delayInnerLoop 

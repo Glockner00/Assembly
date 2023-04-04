@@ -24,11 +24,11 @@
  <LABELS>
   <INITSTACK><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>4</LINE></INITSTACK>
   <STARTBIT><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>10</LINE></STARTBIT>
-  <LETA><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>17</LINE></LETA>
-  <DELAY><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>53</LINE></DELAY>
+  <FIND><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>17</LINE></FIND>
+  <DELAY><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>43</LINE></DELAY>
   <CHECKBIT><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>24</LINE></CHECKBIT>
-  <DATA><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>40</LINE></DATA>
-  <delayOuterLoop><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>56</LINE></delayOuterLoop>
-  <delayInnerLoop><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>58</LINE></delayInnerLoop>
+  <DATA><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>30</LINE></DATA>
+  <delayOuterLoop><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>46</LINE></delayOuterLoop>
+  <delayInnerLoop><FILE>C:\Users\axegl\Assembly\Labb1\Testkod\AssemblerApplication1\main.asm</FILE><LINE>48</LINE></delayInnerLoop>
  </LABELS>
 </ASSEMBLER_INFO>

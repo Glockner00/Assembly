@@ -22,13 +22,14 @@
   <FILE>AssemblerApplication1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <INITSTACK><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>1</LINE></INITSTACK>
-  <STARTBIT><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>7</LINE></STARTBIT>
-  <FIND><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>14</LINE></FIND>
-  <CHECKBIT><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>20</LINE></CHECKBIT>
-  <DELAY><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>40</LINE></DELAY>
-  <DATA><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>26</LINE></DATA>
-  <delayOuterLoop><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>43</LINE></delayOuterLoop>
-  <delayInnerLoop><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>45</LINE></delayInnerLoop>
+  <INITSTACK><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>4</LINE></INITSTACK>
+  <STARTBIT><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>10</LINE></STARTBIT>
+  <FINDONE><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>17</LINE></FINDONE>
+  <CHECKBIT><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>23</LINE></CHECKBIT>
+  <DELAY><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>44</LINE></DELAY>
+  <DATALOOP><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>29</LINE></DATALOOP>
+  <print><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>38</LINE></print>
+  <delayOuterLoop><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>47</LINE></delayOuterLoop>
+  <delayInnerLoop><FILE>C:\Users\axelg\Assembly\Labb1\IRv2\AssemblerApplication1\main.asm</FILE><LINE>49</LINE></delayInnerLoop>
  </LABELS>
 </ASSEMBLER_INFO>

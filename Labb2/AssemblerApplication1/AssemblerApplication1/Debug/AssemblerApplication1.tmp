@@ -1,0 +1,46 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega16A"</DEVICE>
+ <WORKING_DIR>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\Debug\AssemblerApplication1.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>AssemblerApplication1.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>AssemblerApplication1.map</FILE>
+  <FILE>AssemblerApplication1.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <INIT><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>1</LINE></INIT>
+  <MORSE><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>12</LINE></MORSE>
+  <MESSAGE><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>79</LINE></MESSAGE>
+  <GET_CHAR><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>53</LINE></GET_CHAR>
+  <ONE_CHAR><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>17</LINE></ONE_CHAR>
+  <SPACE><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>27</LINE></SPACE>
+  <LOOKUP><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>33</LINE></LOOKUP>
+  <SEND><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>49</LINE></SEND>
+  <NO_CHAR><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>22</LINE></NO_CHAR>
+  <NO_BEEP><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>62</LINE></NO_BEEP>
+  <BTAB><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>82</LINE></BTAB>
+  <CONTINUE><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>40</LINE></CONTINUE>
+  <CHAR_DONE><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>51</LINE></CHAR_DONE>
+  <GET_BIT><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>56</LINE></GET_BIT>
+  <BEEP><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>58</LINE></BEEP>
+  <BEEPLOOP><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>60</LINE></BEEPLOOP>
+  <CYCLE><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>64</LINE></CYCLE>
+  <DELAY><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>67</LINE></DELAY>
+  <delayYttreLoop><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>69</LINE></delayYttreLoop>
+  <delayInreLoop><FILE>C:\Users\axelg\Assembly\Labb2\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>71</LINE></delayInreLoop>
+ </LABELS>
+</ASSEMBLER_INFO>

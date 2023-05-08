@@ -36,6 +36,7 @@ MAIN:
 	rjmp MAIN
 
 INT0_handler:
+	ldi r29, 0
 	ldi r19, 2
 	push r16
 	in r16, SREG
@@ -48,16 +49,19 @@ LOOP:
 	inc r17
 	cpi r17, 10
 	brne INT0_DONE 
+	ldi r29, 1 ; vår variabe som bstämmer vilken display som ska uppdateras
 	clr r17
 	st X+, r17
 	ld r17, X
 	inc r17
 	cpi r17, 6
 	brne INT0_DONE
+	ldi r29, 2
 	clr r17
 	st X+, r17
 	dec r19
 	brne LOOP
+	ldi r19, 3
 	
 	int0_done:
 		st X, r17
@@ -77,6 +81,7 @@ INT1_handler:
 	ld r18, Z
 	call LOOKUP
 	out PORTA, r18
+	out PORTB, r29
 	
 	int1_done:
 		pop r16

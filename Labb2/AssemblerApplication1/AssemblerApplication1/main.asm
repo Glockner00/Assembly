@@ -10,12 +10,11 @@ MORSE:	ldi		ZL, LOW(MESSAGE*2)  ; load the message, low (top of the stack)
 		ldi		ZH, HIGH(MESSAGE*2) ; load the message, high (top of the stack)
 		rcall	GET_CHAR
 
-
 ; MAIN LOOP FOR SENDING THE MESSAGE.
 ONE_CHAR:	
 	cpi	r18, 0x20	; compare with a space
 	breq SPACE		; branch if there is a space
-	rcall LOOKUP		; else go to lookup and translate the ASCII character to binary.
+	rcall LOOKUP	; else go to lookup and translate the ASCII character to binary.
 	rcall SEND
 	call GET_CHAR
 	call NO_BEEP
@@ -23,7 +22,6 @@ ONE_CHAR:
 	cpi r18, 0x00
 	breq END
 	rjmp ONE_CHAR
-
 
 END:
 	RJMP END
@@ -38,8 +36,8 @@ LOOKUP:
 	add ZL, r18
 	adc ZH, r22
 	lpm r19, Z
-	pop Zh
-	pop Zl
+	pop ZH
+	pop ZL
 	ret
 
 SEND:
@@ -121,5 +119,3 @@ MESSAGE:	.db "SOS HEJ",$00
  
 .org $230
 BTAB:	.db  $60, $88, $A8, $90, $40, $28, $D0, $08, $20, $78, $B0, $48, $E0, $A0, $F0, $68, $D8, $50, $10, $C0, $30, $18, $70, $98, $B8, $C8
-
-

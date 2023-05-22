@@ -1,0 +1,36 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega16A"</DEVICE>
+ <WORKING_DIR>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\Debug\Lax-demo1.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Lax-demo1.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Lax-demo1.map</FILE>
+  <FILE>Lax-demo1.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <MAIN><FILE>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\main.asm</FILE><LINE>8</LINE></MAIN>
+  <HW_INIT><FILE>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\main.asm</FILE><LINE>38</LINE></HW_INIT>
+  <DELAY><FILE>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\main.asm</FILE><LINE>44</LINE></DELAY>
+  <DATA><FILE>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\main.asm</FILE><LINE>15</LINE></DATA>
+  <PRINT><FILE>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\main.asm</FILE><LINE>32</LINE></PRINT>
+  <LESS_TEN><FILE>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\main.asm</FILE><LINE>26</LINE></LESS_TEN>
+  <MORE_TEN><FILE>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\main.asm</FILE><LINE>22</LINE></MORE_TEN>
+  <DONE><FILE>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\main.asm</FILE><LINE>29</LINE></DONE>
+  <delayYttreLoop><FILE>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\main.asm</FILE><LINE>46</LINE></delayYttreLoop>
+  <delayInreLoop><FILE>C:\Users\axelg\Assembly\laxar\Lax-demo1\Lax-demo1\main.asm</FILE><LINE>51</LINE></delayInreLoop>
+ </LABELS>
+</ASSEMBLER_INFO>

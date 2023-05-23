@@ -7,10 +7,16 @@ call HW_INIT
 DATA:
 	in r16, PINA
 	cpi r16, 0xFF
-	brne PRINT
+	breq TOGGLE
 	cpi r16, 9
 	brmi DATA
+	jmp PRINT
+TOGGLE:
+	cpi r17, 1
+	breq ZERO
 	ldi r17, 1
+ZERO:
+	ldi r17, 0
 
 PRINT:
 	cpi r17, 1
